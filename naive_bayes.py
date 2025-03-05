@@ -64,7 +64,7 @@ with open('weather_test.csv', 'r') as csvfile:
 
 #Printing the header os the solution
 #--> add your Python code here
-print("Day Outlook Temperature Humidity Wind PlayTennis Confidence")
+print("Day \tOutlook \tTemperature \tHumidity \tWind \t\tPlayTennis \tConfidence")
 
 #Use your test samples to make probabilistic predictions. For instance: clf.predict_proba([[3, 1, 2, 1]])[0]
 #--> add your Python code here
@@ -73,5 +73,5 @@ for i, probs in enumerate(predictions):
     confidence = max(probs)
     if confidence >= 0.75:
         predicted_label = "Yes" if probs[1] > probs[0] else "No"
-        print(f"{test_instances[i][0]} {test_instances[i][1]} {test_instances[i][2]} {test_instances[i][3]} {test_instances[i][4]} {predicted_label} {confidence:.2f}")
+        print(f"{test_instances[i][0]} \t{test_instances[i][1]} {'\t' if len(test_instances[i][1]) < 8 else ''}\t{test_instances[i][2]} \t\t{test_instances[i][3]} \t\t{test_instances[i][4]} \t\t{predicted_label} \t\t{confidence:.3f}")
 

@@ -31,23 +31,20 @@ for i in range(n):
 
     #Add the training features to the 2D array X removing the instance that will be used for testing in this iteration.
     #For instance, X = [[1, 3], [2, 1,], ...]].
-    #Convert each feature value to float to avoid warning messages
     #--> add your Python code here
     for j in range(n):
         if i != j:  # Exclude the test instance
             X.append([float(value) for value in db[j][:-1]])  # Convert features to float
-            Y.append(1 if db[j][-1] == 'spam' else 0)  # Convert labels to numerical (spam=1, ham=0)
 
-    #Transform the original training classes to numbers and add them to the vector Y.
-    #Do not forget to remove the instance that will be used for testing in this iteration.
-    #For instance, Y = [1, 2, ,...].
-    #Convert each feature value to float to avoid warning messages
+            #Transform the original training classes to numbers and add them to the vector Y.
+            #Do not forget to remove the instance that will be used for testing in this iteration.
+            #For instance, Y = [1, 2, ,...].
+            Y.append(1 if db[j][-1] == 'spam' else 0)  # Convert labels to numerical (spam=1, ham=0)
+    
+    #Store the test sample of this iteration in the vector testSample
     #--> add your Python code here
     testSample = [float(value) for value in db[i][:-1]]
     true_label = 1 if db[i][-1] == 'spam' else 0
-
-    #Store the test sample of this iteration in the vector testSample
-    #--> add your Python code here
 
     #Fitting the knn to the data
     clf = KNeighborsClassifier(n_neighbors=1, p=2)
@@ -66,7 +63,7 @@ for i in range(n):
 #Print the error rate
 #--> add your Python code here
 error_rate = errors / n
-print(f"LOO-CV Error Rate: {error_rate:.4f}")
+print(f"LOO-CV 1NN Error Rate: {error_rate:.4f}")
 
 
 
